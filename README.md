@@ -29,6 +29,7 @@
   <img src="https://img.shields.io/badge/k6-7D64FF?style=for-the-badge&logo=k6&logoColor=white">
   <img src="https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white">
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  <img src="https://img.shields.io/badge/elasticsearch-005571?style=for-the-badge&logo=elasticsearch&logoColor=white">
   </br>
 
   <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/cb8fc4be-0080-40ab-b569-f3254d33ae03" /> CI/CD</h2>
