@@ -15,6 +15,7 @@
   <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white">
   <img src="https://img.shields.io/badge/C Sharp-663399?style=for-the-badge&logo=csharp&logoColor=white">
   <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/go-00ADD8?style=for-the-badge&logo=go&logoColor=white">
   </br>
 
   <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/71eec0f2-cf45-4ff8-afa9-b1909754dffa" /> Microservice Core</h2>
