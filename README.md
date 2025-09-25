@@ -35,7 +35,7 @@
   <img src="https://img.shields.io/badge/openapi-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white">
   </br>
 
-  <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/cb8fc4be-0080-40ab-b569-f3254d33ae03" /> CI/CD</h2>
+  <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/cb8fc4be-0080-40ab-b569-f3254d33ae03" /> DevOps</h2>
   <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
   <img src="https://img.shields.io/badge/EC2-FF7800?style=for-the-badge&logo=ec2&logoColor=white">
   <img src="https://img.shields.io/badge/Aurora-224099?style=for-the-badge&logo=aurora&logoColor=white">
