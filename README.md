@@ -1,8 +1,26 @@
-![Solved.ac 프로필](http://mazassumnida.wtf/api/generate_badge?boj=ahjoolove)
+<div align="center">
 
-![Jason's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&theme=transparent)
+# 👋 Welcome to Jason's Dev Space
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact)
+### 🌱 Spring Backend Developer | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
+
+---
+
+<div align="center">
+
+  <a href="https://solved.ac/ahjoolove">
+    <img src="http://mazassumnida.wtf/api/generate_badge?boj=ahjoolove" alt="Solved.ac Profile" height="150"/>
+  </a>
+  <a href="https://github.com/ahmola">
+    <img src="https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&theme=transparent" alt="GitHub Stats" height="150"/>
+  </a>
+  <a href="https://github.com/ahmola">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact&hide=css,scss,html" alt="Top Langs" height="150"/>
+  </a>
+
+</div>
+
+---
 
 <div align=center>
   <h1><img width="40" height="40" alt="image" src="https://github.com/user-attachments/assets/cdddd514-0d2e-4d0c-a153-876961a1b9c4"> STACKS</h1>
@@ -67,3 +85,12 @@
   <img src="https://img.shields.io/badge/unity-FFFFFF?style=for-the-badge&logo=unity&logoColor=black">
   <img src="https://img.shields.io/badge/gnuradio-FF7800?style=for-the-badge&logo=gnuradio&logoColor=white">
 </div>
+
+---
+
+## 📫 Connect with Me
+<a href="https://github.com/ahmola"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"></a>
+<a href="https://solved.ac/ahjoolove"><img src="https://img.shields.io/badge/Solved.ac-1B1F23?style=flat-square&logo=solvedac&logoColor=white"></a>
+<a href="mailto:ahjoolove22@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white"></a>
+
+---
