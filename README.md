@@ -1,6 +1,6 @@
 ![Solved.ac 프로필](http://mazassumnida.wtf/api/generate_badge?boj=ahjoolove)
 
-![Jason's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmmola&show_icons=true&theme=transparent)
+![Jason's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&theme=transparent)
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact)
 
