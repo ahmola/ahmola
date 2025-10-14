@@ -2,7 +2,7 @@
 
 # 👋 Welcome to Jason's Dev Space
 
-### 🌱 Spring Backend Developer | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
+### 🌱 Backend & DevOps | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
 
 ---
 
