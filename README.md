@@ -69,7 +69,6 @@
   <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=white">
   <img src="https://img.shields.io/badge/ngrok-1F1E37?style=for-the-badge&logo=ngrok&logoColor=white">
   <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
-  <img src="https://img.shields.io/badge/tailscale-242424?style=for-the-badge&logo=tailscale&logoColor=white">
   </br>
 
   <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/7af83d93-762e-4e30-8bdb-7737ed05b853" /> Others</h2>
@@ -84,6 +83,7 @@
   <img src="https://img.shields.io/badge/raspberry pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white">
   <img src="https://img.shields.io/badge/unity-FFFFFF?style=for-the-badge&logo=unity&logoColor=black">
   <img src="https://img.shields.io/badge/gnuradio-FF7800?style=for-the-badge&logo=gnuradio&logoColor=white">
+  <img src="https://img.shields.io/badge/tailscale-242424?style=for-the-badge&logo=tailscale&logoColor=white">
   <img src="https://img.shields.io/badge/termius-000000?style=for-the-badge&logo=termius&logoColor=white">
 </div>
 
