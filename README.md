@@ -2,6 +2,8 @@
 
 # 👋 Welcome to Jason's Dev Space
 
+💬 _"Form follows function - Louis Sullivan"_ 
+
 ### 🌱 Backend & DevOps | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
 
 ---
