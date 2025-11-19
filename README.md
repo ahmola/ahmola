@@ -88,6 +88,7 @@
   <img src="https://img.shields.io/badge/gnuradio-FF7800?style=for-the-badge&logo=gnuradio&logoColor=white">
   <img src="https://img.shields.io/badge/tailscale-242424?style=for-the-badge&logo=tailscale&logoColor=white">
   <img src="https://img.shields.io/badge/termius-000000?style=for-the-badge&logo=termius&logoColor=white">
+  <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 </div>
 
 ---
