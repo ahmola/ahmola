@@ -13,6 +13,9 @@
   <a href="https://solved.ac/ahjoolove">
     <img src="http://mazassumnida.wtf/api/generate_badge?boj=ahjoolove" alt="Solved.ac Profile" height="150"/>
   </a>
+  <a href="https://git.io/streak-stats">
+    <img src="https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200" alt="GitHub Streak" />
+  </a>
   <a href="https://github.com/ahmola">
     <img src="https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&theme=transparent" alt="GitHub Stats" height="150"/>
   </a>
