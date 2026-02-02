@@ -11,9 +11,13 @@
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200)](https://git.io/streak-stats)
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola)](https://github.com/anuraghazra/github-readme-stats)
+<div align="center">
+  <img src="https://github-contribution-stats.vercel.app/api/?username=ahmola&theme=radical&layout=compact" alt="Hoang Son's GitHub Contributions" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hoangsonww&layout=compact&theme=radical&langs_count=20" alt="Top Langs" />
+</div>
 
-[![solvedac badge](https://solvedac-readme-badge.vercel.app/api/v1/badge?user=ahjoolove&compact=1)](https://github.com/2ykwang/solvedac-readme-badge)
+[![solvedac badge](https://solvedac-readme-badge.vercel.app/api/v1/badge?user=ahjoolove&compact=1&theme=dark&size=medium)](https://github.com/2ykwang/solvedac-readme-badge)
+
 
 ---
 
