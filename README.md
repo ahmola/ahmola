@@ -8,22 +8,12 @@
 
 ---
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=ahmola&theme=github-compact)](https://github.com/ashutosh00710/github-readme-activity-graph)
-<div align="center">
 
-  <a href="https://solved.ac/ahjoolove">
-    <img src="http://mazassumnida.wtf/api/generate_badge?boj=ahjoolove" alt="Solved.ac Profile" height="150"/>
-  </a>
-  <a href="https://git.io/streak-stats">
-    <img src="https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200" alt="GitHub Streak" />
-  </a>
-  <a href="https://github.com/ahmola">
-    <img src="https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&theme=transparent" alt="GitHub Stats" height="150"/>
-  </a>
-  <a href="https://github.com/ahmola">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact&hide=css,scss,html" alt="Top Langs" height="150"/>
-  </a>
+[![GitHub Streak](https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200)](https://git.io/streak-stats)
 
-</div>
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola)](https://github.com/anuraghazra/github-readme-stats)
+
+[![solvedac badge](https://solvedac-readme-badge.vercel.app/api/v1/badge?user=ahjoolove&compact=1)](https://github.com/2ykwang/solvedac-readme-badge)
 
 ---
 
