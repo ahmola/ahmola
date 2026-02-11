@@ -86,6 +86,7 @@
   <img src="https://img.shields.io/badge/termius-000000?style=for-the-badge&logo=termius&logoColor=white">
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
   <img src="https://img.shields.io/badge/resend-000000?style=for-the-badge&logo=resend&logoColor=white">
+  <img src="https://img.shields.io/badge/kakakoapi-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
 </div>
 
 ---
