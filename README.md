@@ -35,6 +35,7 @@
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
   <img src="https://img.shields.io/badge/gin-008ECF?style=for-the-badge&logo=gin&logoColor=white">
   <img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+  <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
   <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
   <img src="https://img.shields.io/badge/Netflix Eureka-E50914?style=for-the-badge&logo=netflix&logoColor=white">
   <img src="https://img.shields.io/badge/consul-F24C53?style=for-the-badge&logo=consul&logoColor=white">
@@ -46,6 +47,7 @@
   <img src="https://img.shields.io/badge/elasticsearch-005571?style=for-the-badge&logo=elasticsearch&logoColor=white">
   <img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white">
   <img src="https://img.shields.io/badge/openapi-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white">
+  <img src="https://img.shields.io/badge/kakakoapi-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
   </br>
 
   <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/cb8fc4be-0080-40ab-b569-f3254d33ae03" /> DevOps</h2>
@@ -77,7 +79,6 @@
   <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
   <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
   <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white">
-  <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
   <img src="https://img.shields.io/badge/android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
   <img src="https://img.shields.io/badge/raspberry pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white">
   <img src="https://img.shields.io/badge/unity-FFFFFF?style=for-the-badge&logo=unity&logoColor=black">
@@ -86,7 +87,6 @@
   <img src="https://img.shields.io/badge/termius-000000?style=for-the-badge&logo=termius&logoColor=white">
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
   <img src="https://img.shields.io/badge/resend-000000?style=for-the-badge&logo=resend&logoColor=white">
-  <img src="https://img.shields.io/badge/kakakoapi-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
 </div>
 
 ---
