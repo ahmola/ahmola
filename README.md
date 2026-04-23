@@ -13,7 +13,9 @@
   <img src="https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200" alt="Hoang Son's GitHub Contributions" />
 </div>
 
-[![solvedac badge](https://solvedac-readme-badge.vercel.app/api/v1/badge?user=ahjoolove&compact=1&theme=dark&size=medium)](https://github.com/2ykwang/solvedac-readme-badge)
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact)
+
 
 ---
 
