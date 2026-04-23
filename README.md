@@ -7,15 +7,14 @@
 ### 🌱 Backend & DevOps | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
 
 ---
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&&theme=radical)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact&&theme=merko)
+
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=ahmola&theme=github-compact)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 <div align="center">
   <img src="https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200" alt="Hoang Son's GitHub Contributions" />
 </div>
-
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact)
-
 
 ---
 
