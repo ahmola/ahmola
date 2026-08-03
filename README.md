@@ -7,7 +7,16 @@
 ### 🌱 Backend & DevOps | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
 
 ![Visitor Count](https://komarev.com/ghpvc/?username=ahmola&style=for-the-badge&color=00FF41)
+
 ---
+
+## 📫 Connect with Me
+<a href="https://github.com/ahmola"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"></a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahjoolove22@gmail.com" target="_blank">
+  <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white">
+</a>
+---
+
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ahjoolove)](https://solved.ac/ahjoolove/)
 
 <div align="center">
@@ -89,13 +98,3 @@
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
   <img src="https://img.shields.io/badge/resend-000000?style=for-the-badge&logo=resend&logoColor=white">
 </div>
-
----
-
-## 📫 Connect with Me
-<a href="https://github.com/ahmola"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"></a>
-<a href="https://solved.ac/ahjoolove"><img src="https://img.shields.io/badge/Solved.ac-1B1F23?style=flat-square&logo=solvedac&logoColor=white"></a>
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahjoolove22@gmail.com" target="_blank">
-  <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white">
-</a>
----
