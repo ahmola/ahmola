@@ -7,9 +7,7 @@
 ### 🌱 Backend & DevOps | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
 
 ---
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=ahmola&show_icons=true&&theme=radical)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ahmola&layout=compact&&theme=merko)
-
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ahjoolove)](https://solved.ac/ahjoolove/)
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=ahmola&theme=github-compact)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 <div align="center">
