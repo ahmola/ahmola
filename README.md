@@ -41,11 +41,21 @@
   <img src="https://img.shields.io/badge/go-00ADD8?style=for-the-badge&logo=go&logoColor=white">
   </br>
 
+  <h2><img width="30" height="30" alt="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJILxNix9L3qjn_hrlOaV-lokgsvaTYkabCeBQVzJPmw&s=10" /> AIOps </h2>
+  <img src="https://img.shields.io/badge/mcp-000000?style=for-the-badge&logo=modelcontextprotocol&logoColor=white">
+  <img src="https://img.shields.io/badge/gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white">
+  <img src="https://img.shields.io/badge/antigravity-2496ED?style=for-the-badge&logo=googleantigravity&logoColor=white">
+  <img src="https://img.shields.io/badge/claude-D97757?style=for-the-badge&logo=claude&logoColor=white">
+  <img src="https://img.shields.io/badge/hermes_agent-F56E0F?style=for-the-badge&logo=hermes-agent&logoColor=white">
+  <img src="https://img.shields.io/badge/ollama-000000?style=for-the-badge&logo=ollama&logoColor=white">
+  </br>
+
   <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/71eec0f2-cf45-4ff8-afa9-b1909754dffa" /> Microservice Core</h2>
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
   <img src="https://img.shields.io/badge/gin-008ECF?style=for-the-badge&logo=gin&logoColor=white">
   <img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white">
   <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+  <img src="https://img.shields.io/badge/dash-008DE4?style=for-the-badge&logo=dash&logoColor=white">
   <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
   <img src="https://img.shields.io/badge/Netflix Eureka-E50914?style=for-the-badge&logo=netflix&logoColor=white">
   <img src="https://img.shields.io/badge/consul-F24C53?style=for-the-badge&logo=consul&logoColor=white">
@@ -80,6 +90,8 @@
   <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=white">
   <img src="https://img.shields.io/badge/ngrok-1F1E37?style=for-the-badge&logo=ngrok&logoColor=white">
   <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
+  <img src="https://img.shields.io/badge/caddy-1F88C0?style=for-the-badge&logo=caddy&logoColor=white">
+  <img src="https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white">
   </br>
 
   <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/7af83d93-762e-4e30-8bdb-7737ed05b853" /> Others</h2>
