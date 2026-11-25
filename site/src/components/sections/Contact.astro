@@ -1,11 +1,12 @@
 ---
 import Section from '@/components/Section.astro';
-import { getSite } from '@/lib/content';
-import { isExternal } from '@/lib/url';
+import { getDownload, getSite } from '@/lib/content';
+import { isExternal, resolveHref } from '@/lib/url';
 
 interface Props { index?: number }
 const { index } = Astro.props;
 const { contact } = await getSite();
+const download = await getDownload();
 ---
 
 <Section id="contact" title={contact.title} description={contact.description} index={index}>
@@ -17,6 +18,13 @@ const { contact } = await getSite();
         </a>
       </li>
     ))}
+    {download && (
+      <li>
+        <a class="button primary" href={resolveHref(download.file)} download={download.filename ?? ''}>
+          <span aria-hidden="true">↓</span> {download.label}
+        </a>
+      </li>
+    )}
   </ul>
 </Section>
 

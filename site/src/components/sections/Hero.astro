@@ -1,9 +1,10 @@
 ---
 import DigitalRain from '@/components/effects/DigitalRain.astro';
-import { getSite } from '@/lib/content';
+import { getDownload, getSite } from '@/lib/content';
 import { resolveHref, isExternal } from '@/lib/url';
 
 const { hero } = await getSite();
+const download = await getDownload();
 ---
 
 <section class="hero">
@@ -22,7 +23,7 @@ const { hero } = await getSite();
     {hero.quote && (
       <blockquote class="muted" data-reveal style="--reveal-delay:0.5s">“{hero.quote}”</blockquote>
     )}
-    {hero.actions.length > 0 && (
+    {(hero.actions.length > 0 || download) && (
       <div class="actions" data-reveal style="--reveal-delay:0.65s">
         {hero.actions.map((a, i) => (
           <a
@@ -31,6 +32,11 @@ const { hero } = await getSite();
             {...(isExternal(a.href) && { target: '_blank', rel: 'noopener' })}
           >{a.label}</a>
         ))}
+        {download && (
+          <a class="button" href={resolveHref(download.file)} download={download.filename ?? ''}>
+            <span aria-hidden="true">↓</span> {download.label}
+          </a>
+        )}
       </div>
     )}
   </div>

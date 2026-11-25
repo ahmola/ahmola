@@ -40,6 +40,16 @@ const site = defineCollection({
       quote: z.string().optional(),
       actions: z.array(link).default([]),
     }),
+    /** 다운로드 버튼 (파일이 public 폴더에 실제로 있을 때만 표시) */
+    download: z
+      .object({
+        label: z.string(),
+        /** public 기준 경로. 예: /files/portfolio.pdf */
+        file: z.string(),
+        /** 받을 때 저장될 파일 이름 (선택) */
+        filename: z.string().optional(),
+      })
+      .optional(),
     about: z.object({
       title: z.string(),
       paragraphs: z.array(z.string()).default([]),

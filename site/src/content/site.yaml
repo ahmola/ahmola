@@ -35,6 +35,13 @@ hero:
     - label: "GitHub"
       href: "https://github.com/ahmola"
 
+# 포트폴리오 PDF 다운로드 버튼 (첫 화면과 Contact 에 표시)
+# site/public/files/portfolio.pdf 파일이 있을 때만 버튼이 나타납니다.
+download:
+  label: "포트폴리오 PDF"
+  file: "/files/portfolio.pdf"
+  filename: "portfolio.pdf"
+
 about:
   title: About
   paragraphs:
