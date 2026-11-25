@@ -1,0 +1,73 @@
+# =============================================================
+#  사이트 문구 모음
+#  - 화면에 보이는 텍스트는 (프로젝트/스택 제외) 전부 여기서 수정합니다.
+#  - 구조는 src/content.config.ts 의 `site` 스키마를 따릅니다.
+#  - 지금 값은 전부 자리표시자(placeholder)입니다.
+# =============================================================
+
+meta:
+  title: "사이트 제목"
+  description: "검색 결과/링크 미리보기에 표시될 한 줄 설명"
+  lang: ko
+
+# 상단 메뉴. href는 섹션 id(#about 등)와 맞춰 주세요.
+nav:
+  - label: About
+    href: "#about"
+  - label: Stack
+    href: "#stack"
+  - label: Projects
+    href: "#projects"
+  - label: Contact
+    href: "#contact"
+
+hero:
+  eyebrow: "Backend & DevOps"
+  name: "이름"
+  tagline: "한 줄 소개를 적어주세요."
+  quote: "좋아하는 문구 (선택)"
+  actions:
+    - label: "프로젝트 보기"
+      href: "#projects"
+    - label: "GitHub"
+      href: "https://github.com/ahmola"
+
+about:
+  title: About
+  paragraphs:
+    - "자기소개 첫 번째 문단."
+    - "자기소개 두 번째 문단."
+
+stack:
+  title: Tech Stack
+  description: "기술 스택 섹션 설명 (선택)"
+
+projects:
+  title: Projects
+  description: "프로젝트 섹션 설명 (선택)"
+  emptyText: "아직 등록된 프로젝트가 없습니다."
+  labels:
+    detail: "자세히 보기"
+    github: "GitHub"
+    demo: "Demo"
+    back: "← 목록으로"
+    period: "기간"
+    role: "역할"
+    stack: "사용 기술"
+
+contact:
+  title: Contact
+  description: "연락 안내 문구 (선택)"
+  links:
+    - label: GitHub
+      href: "https://github.com/ahmola"
+    - label: Email
+      href: "mailto:you@example.com"
+
+footer:
+  text: "© 2026 이름"
+
+notFound:
+  title: "페이지를 찾을 수 없어요"
+  description: "주소가 바뀌었거나 삭제된 페이지입니다."
+  backLabel: "홈으로"

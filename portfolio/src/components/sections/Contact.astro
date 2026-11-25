@@ -1,0 +1,23 @@
+---
+import Section from '@/components/Section.astro';
+import { getSite } from '@/lib/content';
+import { isExternal } from '@/lib/url';
+
+const { contact } = await getSite();
+---
+
+<Section id="contact" title={contact.title} description={contact.description}>
+  <ul class="links">
+    {contact.links.map((l) => (
+      <li>
+        <a class="button" href={l.href} {...(isExternal(l.href) && { target: '_blank', rel: 'noopener' })}>
+          {l.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</Section>
+
+<style>
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 var(--space-section); padding: 0; list-style: none; }
+</style>
