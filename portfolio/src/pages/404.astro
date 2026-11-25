@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getSite } from '@/lib/content';
+import { resolveHref } from '@/lib/url';
+
+const { notFound } = await getSite();
+---
+
+<BaseLayout title={notFound.title}>
+  <div class="container nf">
+    <p class="mono muted">404</p>
+    <h1>{notFound.title}</h1>
+    <p class="muted">{notFound.description}</p>
+    <a class="button" href={resolveHref('/')}>{notFound.backLabel}</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .nf { padding: 120px var(--gutter); }
+  h1 { margin: 0; }
+</style>

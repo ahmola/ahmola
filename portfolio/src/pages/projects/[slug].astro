@@ -1,0 +1,64 @@
+---
+/**
+ * 프로젝트 상세 페이지: src/content/projects/<파일명>.md → /projects/<파일명>/
+ */
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getProjects, getSite } from '@/lib/content';
+import { resolveHref } from '@/lib/url';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { projects: copy } = await getSite();
+const { labels } = copy;
+const { title, summary, period, role, stack, github, demo } = project.data;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={title} description={summary}>
+  <article class="container project">
+    <a class="back muted" href={resolveHref('#projects')}>{labels.back}</a>
+    <h1>{title}</h1>
+    <p class="summary muted">{summary}</p>
+
+    <dl class="meta">
+      {period && (<div><dt>{labels.period}</dt><dd>{period}</dd></div>)}
+      {role && (<div><dt>{labels.role}</dt><dd>{role}</dd></div>)}
+      {stack.length > 0 && (
+        <div>
+          <dt>{labels.stack}</dt>
+          <dd><ul class="tag-list">{stack.map((s) => <li class="tag">{s}</li>)}</ul></dd>
+        </div>
+      )}
+    </dl>
+
+    {(github || demo) && (
+      <div class="actions">
+        {github && <a class="button" href={github} target="_blank" rel="noopener">{labels.github}</a>}
+        {demo && <a class="button" href={demo} target="_blank" rel="noopener">{labels.demo}</a>}
+      </div>
+    )}
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .project { max-width: 760px; padding-top: 48px; padding-bottom: var(--space-section); }
+  .back { text-decoration: none; font-size: 0.9rem; }
+  .back:hover { color: var(--color-accent); }
+  h1 { margin: 16px 0 0; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.2; }
+  .summary { margin: 12px 0 0; font-size: 1.1rem; }
+  .meta { display: grid; gap: 10px; margin: 32px 0 0; padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .meta div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: baseline; }
+  dt { color: var(--color-muted); font-size: 0.875rem; }
+  dd { margin: 0; }
+  .actions { display: flex; gap: 10px; margin-top: 20px; }
+  .prose { margin-top: 40px; }
+</style>

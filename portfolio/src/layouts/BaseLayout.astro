@@ -1,0 +1,40 @@
+---
+/**
+ * 모든 페이지의 공통 뼈대 (head, 헤더, 푸터)
+ */
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { getSite } from '@/lib/content';
+
+interface Props {
+  /** 페이지별 제목. 없으면 사이트 제목만 사용 */
+  title?: string;
+  description?: string;
+}
+
+const site = await getSite();
+const { title, description = site.meta.description } = Astro.props;
+const pageTitle = title ? `${title} | ${site.meta.title}` : site.meta.title;
+const favicon = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.svg`;
+---
+
+<!doctype html>
+<html lang={site.meta.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+  </head>
+  <body>
+    <Header nav={site.nav} brand={site.hero.name} />
+    <main>
+      <slot />
+    </main>
+    <Footer text={site.footer.text} />
+  </body>
+</html>

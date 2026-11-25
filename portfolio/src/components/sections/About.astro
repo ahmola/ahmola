@@ -1,0 +1,17 @@
+---
+import Section from '@/components/Section.astro';
+import { getSite } from '@/lib/content';
+
+const { about } = await getSite();
+---
+
+<Section id="about" title={about.title}>
+  <div class="about">
+    {about.paragraphs.map((p) => <p>{p}</p>)}
+  </div>
+</Section>
+
+<style>
+  .about { max-width: 65ch; }
+  .about p:first-child { margin-top: 0; }
+</style>

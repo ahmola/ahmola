@@ -1,0 +1,97 @@
+/* =============================================================
+   전역 스타일 & 디자인 토큰
+   색/폰트/간격은 아래 변수만 바꾸면 사이트 전체에 반영됩니다.
+   ============================================================= */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f5f6f7;
+  --color-text: #16181d;
+  --color-muted: #5b6170;
+  --color-border: #e3e5e8;
+  --color-accent: #0a8f3c;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --max-width: 960px;
+  --gutter: 16px;
+  --radius: 10px;
+  --space-section: 96px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0d0f12;
+    --color-surface: #161a1f;
+    --color-text: #e8eaed;
+    --color-muted: #9aa1ad;
+    --color-border: #262b33;
+    --color-accent: #00e05a;
+  }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+img { max-width: 100%; height: auto; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.muted { color: var(--color-muted); }
+.mono { font-family: var(--font-mono); }
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+}
+.button:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.button.primary { background: var(--color-text); color: var(--color-bg); border-color: var(--color-text); }
+.button.primary:hover { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); }
+
+/* 프로젝트 상세 본문(마크다운) */
+.prose h2 { margin-top: 2.5em; font-size: 1.4rem; }
+.prose h3 { margin-top: 2em; font-size: 1.15rem; }
+.prose pre { padding: 16px; border-radius: var(--radius); overflow-x: auto; }
+.prose code { font-family: var(--font-mono); font-size: 0.9em; }
+.prose :not(pre) > code { background: var(--color-surface); padding: 2px 6px; border-radius: 4px; }
