@@ -6,8 +6,8 @@
 # =============================================================
 
 meta:
-  title: "사이트 제목"
-  description: "검색 결과/링크 미리보기에 표시될 한 줄 설명"
+  title: "ahmola.github.io"
+  description: "Portfolio"
   lang: ko
 
 # 상단 메뉴. href는 섹션 id(#about 등)와 맞춰 주세요.
@@ -24,9 +24,9 @@ nav:
 hero:
   prompt: "whoami"
   eyebrow: "Backend & DevOps"
-  name: "이름"
-  tagline: "한 줄 소개를 적어주세요."
-  quote: "좋아하는 문구 (선택)"
+  name: "박영서"
+  tagline: "Full Cycle Developer"
+  quote: "Forms follow Functions"
   actions:
     - label: "프로젝트 보기"
       href: "#projects"
