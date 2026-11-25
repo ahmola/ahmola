@@ -1,0 +1,211 @@
+---
+/**
+ * 문서 사이트형 레이아웃: 헤더 / 왼쪽 폴더 트리 / 본문 / 오른쪽 목차
+ */
+import '@fontsource-variable/jetbrains-mono';
+import '@/styles/global.css';
+import type { MarkdownHeading } from 'astro';
+import SidebarTree from '@/components/SidebarTree.astro';
+import Toc from '@/components/Toc.astro';
+import { buildTree, getBlog, getNotes } from '@/lib/notes';
+import { withBase } from '@/lib/slug';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentId?: string;
+  currentPath?: string;
+  headings?: MarkdownHeading[];
+}
+
+const { title, description, currentId, currentPath, headings = [] } = Astro.props;
+const blog = await getBlog();
+const tree = buildTree(await getNotes());
+const pageTitle = title ? `${title} | ${blog.title}` : `${blog.title} | ${blog.brand}`;
+const external = (href: string) => /^https?:/.test(href);
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description ?? blog.description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta name="theme-color" content="#040705" />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="menu-btn mono" type="button" aria-controls="sidebar" aria-expanded="false" data-menu-toggle>
+          ☰ <span class="sr-only">{blog.labels.menu}</span>
+        </button>
+        <a class="brand mono" href="/"><span class="accent">~/</span>{blog.brand}</a>
+        <a class="section mono" href={withBase()}>/ {blog.title.toLowerCase()}</a>
+        <nav class="top-nav">
+          {blog.nav.map((l) => (
+            <a class="mono" href={l.href} {...(external(l.href) && { target: '_blank', rel: 'noopener' })}>{l.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <div class="shell">
+      <aside class="sidebar" id="sidebar">
+        <nav aria-label="Notes">
+          <a class:list={['home-link mono', { active: !currentId }]} href={withBase()}>{blog.labels.home}</a>
+          <SidebarTree nodes={tree} currentId={currentId} currentPath={currentPath} />
+        </nav>
+        {blog.sidebarLinks.length > 0 && (
+          <ul class="extra">
+            {blog.sidebarLinks.map((l) => (
+              <li><a class="mono" href={l.href} target="_blank" rel="noopener">{l.label}</a></li>
+            ))}
+          </ul>
+        )}
+      </aside>
+      <div class="backdrop" data-menu-close></div>
+
+      <main class="main">
+        <slot />
+      </main>
+
+      <aside class="toc-col">
+        <div class="toc-sticky"><Toc headings={headings} title={blog.labels.toc} /></div>
+      </aside>
+    </div>
+
+    <script>
+      // 모바일 사이드바 열기/닫기
+      const btn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+      const setOpen = (open: boolean) => {
+        document.body.classList.toggle('menu-open', open);
+        btn?.setAttribute('aria-expanded', String(open));
+      };
+      btn?.addEventListener('click', () => setOpen(!document.body.classList.contains('menu-open')));
+      document.querySelector('[data-menu-close]')?.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', (e) => e.key === 'Escape' && setOpen(false));
+
+      // 현재 글이 사이드바에 보이도록 스크롤
+      // (scrollIntoView는 페이지 전체까지 스크롤하므로 사이드바만 직접 스크롤)
+      const sidebar = document.querySelector<HTMLElement>('.sidebar');
+      const active = sidebar?.querySelector<HTMLElement>('.leaf.active');
+      if (sidebar && active) {
+        const top = active.getBoundingClientRect().top - sidebar.getBoundingClientRect().top;
+        sidebar.scrollTop += top - sidebar.clientHeight / 2;
+      }
+
+      // 목차: 지금 읽는 위치 강조
+      const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')];
+      if (links.length) {
+        const targets = links
+          .map((a) => document.getElementById(decodeURIComponent(a.hash.slice(1))))
+          .filter((el): el is HTMLElement => !!el);
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              links.forEach((a) => a.classList.toggle('active', decodeURIComponent(a.hash.slice(1)) === e.target.id));
+            }
+          },
+          { rootMargin: '-80px 0px -70% 0px' },
+        );
+        targets.forEach((t) => io.observe(t));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    height: var(--topbar-h);
+    background: rgb(4 7 5 / 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .topbar-inner { display: flex; align-items: center; gap: 12px; height: 100%; padding: 0 16px; }
+  .brand { font-weight: 700; text-decoration: none; }
+  .section { color: var(--color-muted); text-decoration: none; }
+  .section:hover { color: var(--color-accent); }
+  .top-nav { display: flex; gap: 18px; margin-left: auto; }
+  .top-nav a { color: var(--color-muted); text-decoration: none; font-size: 0.82rem; }
+  .top-nav a:hover { color: var(--color-accent); }
+  .menu-btn {
+    display: none;
+    padding: 4px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .shell {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr) 220px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .sidebar {
+    position: sticky;
+    top: var(--topbar-h);
+    height: calc(100vh - var(--topbar-h));
+    overflow-y: auto;
+    padding: 20px 12px 40px 16px;
+    border-right: 1px solid var(--color-border);
+    scrollbar-width: thin;
+  }
+  .home-link {
+    display: block;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+  .home-link:hover, .home-link.active { color: var(--color-accent); background: var(--color-accent-soft); }
+  .extra { margin: 20px 0 0; padding: 16px 0 0; list-style: none; border-top: 1px solid var(--color-border); }
+  .extra a { display: block; padding: 4px 8px; font-size: 0.8rem; color: var(--color-muted); text-decoration: none; }
+  .extra a:hover { color: var(--color-accent); }
+
+  .main { min-width: 0; padding: 40px clamp(16px, 4vw, 56px) 96px; }
+  .toc-col { padding: 40px 16px 0 0; }
+  .toc-sticky { position: sticky; top: calc(var(--topbar-h) + 32px); max-height: calc(100vh - var(--topbar-h) - 64px); overflow-y: auto; }
+  .backdrop { display: none; }
+
+  @media (max-width: 1200px) {
+    .shell { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+    .toc-col { display: none; }
+  }
+  @media (max-width: 860px) {
+    .menu-btn { display: inline-block; }
+    .section { display: none; }
+    .shell { display: block; }
+    .sidebar {
+      position: fixed;
+      z-index: 25;
+      left: 0;
+      top: var(--topbar-h);
+      width: min(300px, 85vw);
+      background: var(--color-bg);
+      transform: translateX(-100%);
+      transition: transform 0.25s var(--ease-out);
+    }
+    :global(body.menu-open) .sidebar { transform: none; }
+    :global(body.menu-open) .backdrop {
+      display: block;
+      position: fixed;
+      inset: var(--topbar-h) 0 0 0;
+      z-index: 20;
+      background: rgb(0 0 0 / 0.55);
+    }
+    .main { padding-top: 28px; }
+  }
+</style>

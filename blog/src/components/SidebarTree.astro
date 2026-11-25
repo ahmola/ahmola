@@ -1,0 +1,71 @@
+---
+/**
+ * 사이드바 폴더 트리 (재귀). 현재 글이 들어있는 폴더는 펼쳐진 상태로 시작합니다.
+ */
+import type { TreeNode } from '@/lib/notes';
+import { withBase } from '@/lib/slug';
+
+interface Props {
+  nodes: TreeNode[];
+  currentId?: string;
+  currentPath?: string;
+}
+const { nodes, currentId, currentPath = '' } = Astro.props;
+---
+
+<ul class="tree">
+  {nodes.map((node) =>
+    node.note ? (
+      <li>
+        <a
+          class:list={['leaf', { active: node.note.id === currentId }]}
+          href={withBase(`${node.note.id}/`)}
+          aria-current={node.note.id === currentId ? 'page' : undefined}
+        >{node.name}</a>
+      </li>
+    ) : (
+      <li>
+        <details open={currentPath.startsWith(node.path + '/')}>
+          <summary class="mono">{node.name}</summary>
+          <Astro.self nodes={node.children} currentId={currentId} currentPath={currentPath} />
+        </details>
+      </li>
+    ),
+  )}
+</ul>
+
+<style>
+  .tree { margin: 0; padding: 0 0 0 12px; list-style: none; border-left: 1px solid var(--color-border); }
+  :global(.sidebar > nav > .tree) { padding-left: 0; border-left: 0; }
+  li { margin: 1px 0; }
+  summary {
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--color-text);
+    list-style: none;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: '▸';
+    display: inline-block;
+    width: 1em;
+    color: var(--color-accent);
+    transition: transform 0.15s;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+  summary:hover { background: var(--color-accent-soft); }
+  .leaf {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    line-height: 1.45;
+  }
+  .leaf:hover { color: var(--color-text); background: var(--color-accent-soft); }
+  .leaf.active { color: var(--color-accent); background: var(--color-accent-soft); font-weight: 600; }
+</style>

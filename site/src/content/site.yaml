@@ -20,6 +20,8 @@ nav:
     href: "#projects"
   - label: Contact
     href: "#contact"
+  - label: Blog
+    href: "/blog/"
 
 hero:
   prompt: "whoami"

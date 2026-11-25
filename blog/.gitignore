@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.astro/
+# copy-assets.mjs 가 notes/ 에서 복사해 오는 이미지 (빌드할 때마다 새로 생성)
+public/notes/
