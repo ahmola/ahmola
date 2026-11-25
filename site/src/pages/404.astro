@@ -8,8 +8,8 @@ const { notFound } = await getSite();
 
 <BaseLayout title={notFound.title}>
   <div class="container nf">
-    <p class="mono muted">404</p>
-    <h1>{notFound.title}</h1>
+    <p class="mono accent">ERR 404</p>
+    <h1 data-scramble>{notFound.title}</h1>
     <p class="muted">{notFound.description}</p>
     <a class="button" href={resolveHref('/')}>{notFound.backLabel}</a>
   </div>

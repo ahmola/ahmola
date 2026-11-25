@@ -32,6 +32,8 @@ const site = defineCollection({
     }),
     nav: z.array(link),
     hero: z.object({
+      /** 이름 위에 터미널 명령처럼 표시되는 문구 (선택) */
+      prompt: z.string().optional(),
       eyebrow: z.string(),
       name: z.string(),
       tagline: z.string(),
@@ -67,6 +69,8 @@ const site = defineCollection({
     }),
     footer: z.object({
       text: z.string(),
+      /** 오른쪽 아래 상태 표시 문구 (선택) */
+      status: z.string().optional(),
     }),
     notFound: z.object({
       title: z.string(),

@@ -47,6 +47,8 @@ site/
 | 프로젝트 추가 | `_template.md` 복사 → `site/src/content/projects/이름.md`, `draft: false` |
 | 섹션 순서/삭제 | `site/src/pages/index.astro` |
 | 색, 폰트 | `site/src/styles/global.css` 맨 위 `:root` 변수 |
+| 배경 비 효과 세기/속도 | `site/src/components/sections/Hero.astro`의 `<DigitalRain opacity={0.32} />` (`fps`, `fontSize`도 지정 가능) |
+| 스크롤 등장/글자 디코딩 효과 | 요소에 `data-reveal` / `data-scramble` 속성 추가 (`site/src/scripts/effects.ts`) |
 | 새 텍스트 필드 추가 | `content.config.ts` 스키마 → yaml → 컴포넌트 순서로 |
 
 yaml에서 필드를 빠뜨리거나 형식이 틀리면 `npm run dev` 실행 시 어느 파일, 어느 필드인지 에러로 알려줍니다.

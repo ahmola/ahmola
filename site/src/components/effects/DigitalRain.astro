@@ -1,0 +1,118 @@
+---
+/**
+ * 배경에 은은하게 흐르는 디지털 레인 (canvas)
+ * - 투명도/속도/밀도는 아래 data-* 값으로 조절
+ * - 화면 밖이거나 탭이 숨겨지면 멈춤, "동작 줄이기" 설정이면 그리지 않음
+ */
+interface Props {
+  opacity?: number;
+  fontSize?: number;
+  fps?: number;
+}
+const { opacity = 0.35, fontSize = 16, fps = 22 } = Astro.props;
+---
+
+<canvas
+  class="digital-rain"
+  aria-hidden="true"
+  data-font-size={fontSize}
+  data-fps={fps}
+  style={`--rain-opacity:${opacity}`}
+></canvas>
+
+<style>
+  .digital-rain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: var(--rain-opacity);
+    pointer-events: none;
+    /* 아래로 갈수록 배경에 녹아들도록 */
+    mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  }
+</style>
+
+<script>
+  const GLYPHS = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789ABCDEF:=<>{}';
+
+  function start(canvas: HTMLCanvasElement) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const fontSize = Number(canvas.dataset.fontSize) || 16;
+    const interval = 1000 / (Number(canvas.dataset.fps) || 22);
+    const accent = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim() || '#00ff66';
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim() || '#040705';
+
+    const fontFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-mono').trim() || 'monospace';
+    let drops: number[] = [];
+    let width = 0;
+    let height = 0;
+    let gap = 1.15;
+
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, width, height);
+      // 모바일에서는 열 간격을 넓혀 밀도를 낮춤
+      gap = width < 600 ? 1.6 : 1.15;
+      const columns = Math.ceil(width / (fontSize * gap));
+      drops = Array.from({ length: columns }, () => Math.random() * -(height / fontSize));
+    };
+
+    let last = 0;
+    let running = false;
+    let rafId = 0;
+
+    const draw = (now: number) => {
+      rafId = requestAnimationFrame(draw);
+      if (now - last < interval) return;
+      last = now;
+
+      // 이전 프레임을 살짝 덮어 꼬리가 남도록
+      ctx.fillStyle = bg;
+      ctx.globalAlpha = 0.14;
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalAlpha = 1;
+      ctx.font = `${fontSize}px ${fontFamily}`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const y = drops[i] * fontSize;
+        const ch = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+        // 맨 앞 글자는 밝게, 나머지는 테마색
+        ctx.fillStyle = Math.random() > 0.96 ? '#e6ffe9' : accent;
+        ctx.fillText(ch, i * fontSize * gap, y);
+        if (y > height && Math.random() > 0.975) drops[i] = Math.random() * -10;
+        drops[i] += 1;
+      }
+    };
+
+    const play = () => { if (!running) { running = true; rafId = requestAnimationFrame(draw); } };
+    const pause = () => { running = false; cancelAnimationFrame(rafId); };
+
+    resize();
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(resize, 150);
+    });
+
+    let visible = true;
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      visible && !document.hidden ? play() : pause();
+    }).observe(canvas);
+    document.addEventListener('visibilitychange', () => {
+      !document.hidden && visible ? play() : pause();
+    });
+  }
+
+  document.querySelectorAll<HTMLCanvasElement>('canvas.digital-rain').forEach(start);
+</script>

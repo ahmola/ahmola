@@ -22,7 +22,7 @@ const { Content } = await render(project);
 <BaseLayout title={title} description={summary}>
   <article class="container project">
     <a class="back muted" href={resolveHref('#projects')}>{labels.back}</a>
-    <h1>{title}</h1>
+    <h1 data-scramble>{title}</h1>
     <p class="summary muted">{summary}</p>
 
     <dl class="meta">
@@ -51,13 +51,13 @@ const { Content } = await render(project);
 
 <style>
   .project { max-width: 760px; padding-top: 48px; padding-bottom: var(--space-section); }
-  .back { text-decoration: none; font-size: 0.9rem; }
+  .back { font-family: var(--font-mono); text-decoration: none; font-size: 0.85rem; }
   .back:hover { color: var(--color-accent); }
   h1 { margin: 16px 0 0; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.2; }
   .summary { margin: 12px 0 0; font-size: 1.1rem; }
-  .meta { display: grid; gap: 10px; margin: 32px 0 0; padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .meta { display: grid; gap: 10px; margin: 32px 0 0; padding: 20px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
   .meta div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: baseline; }
-  dt { color: var(--color-muted); font-size: 0.875rem; }
+  dt { color: var(--color-muted); font-family: var(--font-mono); font-size: 0.8rem; }
   dd { margin: 0; }
   .actions { display: flex; gap: 10px; margin-top: 20px; }
   .prose { margin-top: 40px; }

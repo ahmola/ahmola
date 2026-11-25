@@ -2,15 +2,17 @@
 import Section from '@/components/Section.astro';
 import { getSite, getStack } from '@/lib/content';
 
+interface Props { index?: number }
+const { index } = Astro.props;
 const { stack } = await getSite();
 const categories = await getStack();
 ---
 
-<Section id="stack" title={stack.title} description={stack.description}>
+<Section id="stack" title={stack.title} description={stack.description} index={index}>
   <div class="grid">
-    {categories.map((c) => (
-      <div class="group">
-        <h3 class="mono">{c.title}</h3>
+    {categories.map((c, i) => (
+      <div class="group" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
+        <h3 class="mono"><span class="accent">&gt;</span> {c.title}</h3>
         <ul class="tag-list">
           {c.items.map((item) => <li class="tag">{item}</li>)}
         </ul>
@@ -20,6 +22,14 @@ const categories = await getStack();
 </Section>
 
 <style>
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-  h3 { margin: 0 0 12px; font-size: 0.95rem; color: var(--color-muted); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .group {
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: rgb(8 16 10 / 0.6);
+    transition: border-color 0.25s;
+  }
+  .group:hover { border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-border)); }
+  h3 { margin: 0 0 14px; font-size: 0.9rem; font-weight: 600; }
 </style>

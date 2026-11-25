@@ -2,12 +2,16 @@
 import Section from '@/components/Section.astro';
 import { getSite } from '@/lib/content';
 
+interface Props { index?: number }
+const { index } = Astro.props;
 const { about } = await getSite();
 ---
 
-<Section id="about" title={about.title}>
+<Section id="about" title={about.title} index={index}>
   <div class="about">
-    {about.paragraphs.map((p) => <p>{p}</p>)}
+    {about.paragraphs.map((p, i) => (
+      <p data-reveal style={`--reveal-delay:${i * 0.08}s`}>{p}</p>
+    ))}
   </div>
 </Section>
 

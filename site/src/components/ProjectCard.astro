@@ -12,7 +12,10 @@ const { title, summary, period, stack } = project.data;
 
 <article class="card">
   <a class="link" href={resolveHref(`/projects/${project.id}/`)}>
-    {period && <p class="period mono muted">{period}</p>}
+    <div class="top mono">
+      <span class="accent">▸</span>
+      {period && <span class="muted">{period}</span>}
+    </div>
     <h3>{title}</h3>
     <p class="muted">{summary}</p>
     {stack.length > 0 && (
@@ -20,21 +23,46 @@ const { title, summary, period, stack } = project.data;
         {stack.map((s) => <li class="tag">{s}</li>)}
       </ul>
     )}
-    <span class="more">{detailLabel} →</span>
+    <span class="more mono">{detailLabel} <span class="arrow">→</span></span>
   </a>
 </article>
 
 <style>
   .card {
+    position: relative;
+    height: 100%;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    background: var(--color-surface);
-    transition: border-color 0.15s;
+    background: linear-gradient(180deg, var(--color-surface), var(--color-bg));
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s var(--ease-out);
   }
-  .card:hover { border-color: var(--color-accent); }
+  /* 위쪽 테두리를 따라 지나가는 빛 */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-accent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 28px var(--color-accent-soft);
+    transform: translateY(-3px);
+  }
+  .card:hover::before { opacity: 1; animation: sweep 1.4s linear infinite; }
+  @keyframes sweep { to { left: 100%; } }
+
   .link { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 24px; text-decoration: none; }
-  h3 { margin: 0; font-size: 1.15rem; }
+  .top { display: flex; gap: 10px; font-size: 0.78rem; }
+  h3 { margin: 0; font-size: 1.15rem; transition: color 0.2s; }
+  .card:hover h3 { color: var(--color-accent); }
   p { margin: 0; }
-  .period { font-size: 0.8rem; }
-  .more { margin-top: auto; padding-top: 8px; font-weight: 600; color: var(--color-accent); font-size: 0.9rem; }
+  .more { margin-top: auto; padding-top: 8px; font-weight: 600; color: var(--color-accent); font-size: 0.82rem; }
+  .arrow { display: inline-block; transition: transform 0.2s; }
+  .card:hover .arrow { transform: translateX(4px); }
 </style>

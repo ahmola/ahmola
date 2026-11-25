@@ -3,20 +3,26 @@ import Section from '@/components/Section.astro';
 import ProjectCard from '@/components/ProjectCard.astro';
 import { getSite, getProjects } from '@/lib/content';
 
+interface Props { index?: number }
+const { index } = Astro.props;
 const { projects: copy } = await getSite();
 const projects = await getProjects();
 ---
 
-<Section id="projects" title={copy.title} description={copy.description}>
+<Section id="projects" title={copy.title} description={copy.description} index={index}>
   {projects.length === 0 ? (
-    <p class="muted">{copy.emptyText}</p>
+    <p class="muted mono">{copy.emptyText}</p>
   ) : (
     <div class="grid">
-      {projects.map((p) => <ProjectCard project={p} detailLabel={copy.labels.detail} />)}
+      {projects.map((p, i) => (
+        <div data-reveal style={`--reveal-delay:${(i % 3) * 0.08}s`}>
+          <ProjectCard project={p} detailLabel={copy.labels.detail} />
+        </div>
+      ))}
     </div>
   )}
 </Section>
 
 <style>
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
 </style>

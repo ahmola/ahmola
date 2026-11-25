@@ -22,6 +22,7 @@ nav:
     href: "#contact"
 
 hero:
+  prompt: "whoami"
   eyebrow: "Backend & DevOps"
   name: "이름"
   tagline: "한 줄 소개를 적어주세요."
@@ -66,6 +67,7 @@ contact:
 
 footer:
   text: "© 2026 이름"
+  status: "online"
 
 notFound:
   title: "페이지를 찾을 수 없어요"

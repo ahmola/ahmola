@@ -1,19 +1,28 @@
 ---
 /**
- * 섹션 공통 틀: id(메뉴 앵커), 제목, 설명 + 내용(slot)
+ * 섹션 공통 틀: id(메뉴 앵커), 번호, 제목, 설명 + 내용(slot)
  */
 interface Props {
   id: string;
   title: string;
   description?: string;
+  /** 제목 앞 번호 (예: 1 → "01.") */
+  index?: number;
 }
-const { id, title, description } = Astro.props;
+const { id, title, description, index } = Astro.props;
+const number = index != null ? `${String(index).padStart(2, '0')}.` : null;
 ---
 
 <section id={id} class="section">
   <div class="container">
-    <h2 class="title">{title}</h2>
-    {description && <p class="muted desc">{description}</p>}
+    <header class="head" data-reveal>
+      <h2 class="title">
+        {number && <span class="num mono accent">{number}</span>}
+        <span>{title}</span>
+        <span class="line" aria-hidden="true"></span>
+      </h2>
+      {description && <p class="muted desc">{description}</p>}
+    </header>
     <div class="body">
       <slot />
     </div>
@@ -22,7 +31,22 @@ const { id, title, description } = Astro.props;
 
 <style>
   .section { padding: var(--space-section) 0 0; }
-  .title { margin: 0; font-size: 1.75rem; letter-spacing: -0.01em; }
-  .desc { margin: 8px 0 0; }
-  .body { margin-top: 32px; }
+  .title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0;
+    font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+    letter-spacing: -0.01em;
+  }
+  .num { font-size: 0.6em; font-weight: 500; }
+  .line {
+    flex: 1;
+    max-width: 280px;
+    height: 1px;
+    align-self: center;
+    background: linear-gradient(to right, var(--color-border), transparent);
+  }
+  .desc { margin: 10px 0 0; }
+  .body { margin-top: 36px; }
 </style>

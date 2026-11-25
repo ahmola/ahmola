@@ -1,4 +1,5 @@
 ---
+import DigitalRain from '@/components/effects/DigitalRain.astro';
 import { getSite } from '@/lib/content';
 import { resolveHref, isExternal } from '@/lib/url';
 
@@ -6,13 +7,23 @@ const { hero } = await getSite();
 ---
 
 <section class="hero">
-  <div class="container">
-    <p class="eyebrow mono">{hero.eyebrow}</p>
-    <h1>{hero.name}</h1>
-    <p class="tagline">{hero.tagline}</p>
-    {hero.quote && <blockquote class="muted">“{hero.quote}”</blockquote>}
+  <DigitalRain opacity={0.32} />
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="container content">
+    {hero.prompt && (
+      <p class="prompt mono" data-reveal>
+        <span class="accent">$</span> {hero.prompt}
+      </p>
+    )}
+    <p class="eyebrow mono accent" data-reveal style="--reveal-delay:0.1s">{hero.eyebrow}</p>
+    <h1 data-scramble>{hero.name}</h1>
+    <p class="tagline cursor" data-reveal style="--reveal-delay:0.35s">{hero.tagline}</p>
+    {hero.quote && (
+      <blockquote class="muted" data-reveal style="--reveal-delay:0.5s">“{hero.quote}”</blockquote>
+    )}
     {hero.actions.length > 0 && (
-      <div class="actions">
+      <div class="actions" data-reveal style="--reveal-delay:0.65s">
         {hero.actions.map((a, i) => (
           <a
             class:list={['button', { primary: i === 0 }]}
@@ -23,13 +34,59 @@ const { hero } = await getSite();
       </div>
     )}
   </div>
+
+  <a class="scroll-hint mono muted" href="#about" aria-hidden="true" tabindex="-1">▼</a>
 </section>
 
 <style>
-  .hero { padding: 120px 0 24px; }
-  .eyebrow { margin: 0; color: var(--color-accent); font-size: 0.9rem; }
-  h1 { margin: 8px 0 0; font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: 1.15; letter-spacing: -0.02em; }
-  .tagline { margin: 16px 0 0; font-size: 1.2rem; max-width: 40ch; }
-  blockquote { margin: 20px 0 0; padding-left: 14px; border-left: 3px solid var(--color-border); }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: calc(100svh - 60px);
+    padding: 80px 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.18) 0 1px, transparent 1px 3px),
+      radial-gradient(ellipse 70% 60% at 22% 50%, rgb(4 7 5 / 0.75), transparent 70%);
+  }
+  .hero :global(.digital-rain) { z-index: -2; }
+  .content { position: relative; }
+
+  .prompt { margin: 0 0 18px; font-size: 0.9rem; color: var(--color-muted); }
+  .eyebrow { margin: 0; font-size: 0.9rem; letter-spacing: 0.04em; }
+  h1 {
+    margin: 10px 0 0;
+    font-size: clamp(2.5rem, 8vw, 4.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 28px rgb(0 255 102 / 0.25);
+  }
+  .tagline { margin: 20px 0 0; font-size: clamp(1.05rem, 2.4vw, 1.3rem); max-width: 42ch; }
+  blockquote {
+    margin: 22px 0 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    translate: -50% 0;
+    font-size: 0.75rem;
+    text-decoration: none;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 50% { transform: translateY(6px); } }
 </style>
