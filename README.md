@@ -1,114 +1,49 @@
-<div align="center">
+# Portfolio (Astro)
 
-# 👋 Welcome to Jason's Dev Space
+## 실행
 
-💬 _"Form follows function - Louis Sullivan"_ 
+```bash
+npm install
+npm run dev      # http://localhost:4321 — 파일 저장하면 바로 반영
+npm run build    # dist/ 에 정적 사이트 생성
+```
 
-### 🌱 Backend & DevOps | 💡 Microservice Architecture Enthusiast | 🙋‍♀️🙋🙋‍♂️ Make Architecture Great Again
+## 디렉터리 구조
 
-![Visitor Count](https://komarev.com/ghpvc/?username=ahmola&style=for-the-badge&color=00FF41)
+```
+portfolio/
+├─ astro.config.mjs          # 사이트 주소(site), 배포 경로(base)
+├─ public/                   # 그대로 복사되는 파일 (favicon, 이미지)
+│  └─ images/
+└─ src/
+   ├─ content/               # ✏️ 텍스트는 전부 여기서 수정
+   │  ├─ site.yaml           #   소개, 메뉴, 섹션 제목, 버튼 문구, 연락처
+   │  ├─ stack.yaml          #   기술 스택 카테고리
+   │  └─ projects/           #   프로젝트 1개 = .md 파일 1개
+   │     ├─ _template.md     #   복사용 템플릿 (_로 시작하면 사이트에 안 나옴)
+   │     └─ sample-project.md
+   ├─ content.config.ts      # 위 텍스트 파일들의 형식(스키마) 정의
+   ├─ lib/                   # 콘텐츠 불러오기, URL 헬퍼
+   ├─ layouts/               # 페이지 공통 뼈대 (head, 헤더, 푸터)
+   ├─ components/
+   │  ├─ sections/           # 메인 페이지 섹션 (Hero, About, Stack, Projects, Contact)
+   │  └─ *.astro             # 공통 컴포넌트 (Header, Footer, Section, ProjectCard)
+   ├─ pages/                 # 파일 경로 = URL
+   │  ├─ index.astro         #   / (섹션 순서는 여기서 조정)
+   │  ├─ projects/[slug].astro  # /projects/<파일명>/
+   │  └─ 404.astro
+   └─ styles/global.css      # 색, 폰트, 간격 변수
+```
 
----
+## 자주 하는 수정
 
-## 📫 Connect with Me
-<a href="https://github.com/ahmola"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"></a>
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahjoolove22@gmail.com" target="_blank">
-  <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white">
-</a>
----
+| 하고 싶은 것 | 수정할 곳 |
+|---|---|
+| 소개, 메뉴, 버튼 문구 | `src/content/site.yaml` |
+| 기술 스택 | `src/content/stack.yaml` |
+| 프로젝트 추가 | `_template.md` 복사 → `src/content/projects/이름.md`, `draft: false` |
+| 섹션 순서/삭제 | `src/pages/index.astro` |
+| 색, 폰트 | `src/styles/global.css` 맨 위 `:root` 변수 |
+| 새 텍스트 필드 추가 | `content.config.ts` 스키마 → yaml → 컴포넌트 순서로 |
 
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ahjoolove)](https://solved.ac/ahjoolove/)
-
-<div align="center">
-  <img src="https://streak-stats.demolab.com?user=ahmola&theme=dark&border_radius=5&date_format=%5BY.%5Dn.j&card_width=500&card_height=200" alt="Hoang Son's GitHub Contributions" />
-</div>
-
-
-[![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=ahmola&theme=github-compact)](https://github.com/ashutosh00710/github-readme-activity-graph)
----
-
-<div align=center>
-  <h1><img width="40" height="40" alt="image" src="https://github.com/user-attachments/assets/cdddd514-0d2e-4d0c-a153-876961a1b9c4"> STACKS</h1>
-
-  <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/9548d8ef-973b-493a-a76a-65ca782a3fbf" /> Language</h2>
-  <img src="https://img.shields.io/badge/Java-FF7800?style=for-the-badge&logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-  <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=white">
-  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white">
-  <img src="https://img.shields.io/badge/C Sharp-663399?style=for-the-badge&logo=csharp&logoColor=white">
-  <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/go-00ADD8?style=for-the-badge&logo=go&logoColor=white">
-  </br>
-
-  <h2><img width="30" height="30" alt="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJILxNix9L3qjn_hrlOaV-lokgsvaTYkabCeBQVzJPmw&s=10" /> AIOps </h2>
-  <img src="https://img.shields.io/badge/mcp-000000?style=for-the-badge&logo=modelcontextprotocol&logoColor=white">
-  <img src="https://img.shields.io/badge/gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white">
-  <img src="https://img.shields.io/badge/antigravity-2496ED?style=for-the-badge&logo=googleantigravity&logoColor=white">
-  <img src="https://img.shields.io/badge/claude-D97757?style=for-the-badge&logo=claude&logoColor=white">
-  <img src="https://img.shields.io/badge/hermes_agent-F56E0F?style=for-the-badge&logo=hermes-agent&logoColor=white">
-  <img src="https://img.shields.io/badge/ollama-000000?style=for-the-badge&logo=ollama&logoColor=white">
-  </br>
-
-  <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/71eec0f2-cf45-4ff8-afa9-b1909754dffa" /> Microservice Core</h2>
-  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-  <img src="https://img.shields.io/badge/gin-008ECF?style=for-the-badge&logo=gin&logoColor=white">
-  <img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white">
-  <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
-  <img src="https://img.shields.io/badge/dash-008DE4?style=for-the-badge&logo=dash&logoColor=white">
-  <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
-  <img src="https://img.shields.io/badge/Netflix Eureka-E50914?style=for-the-badge&logo=netflix&logoColor=white">
-  <img src="https://img.shields.io/badge/consul-F24C53?style=for-the-badge&logo=consul&logoColor=white">
-  <img src="https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white">
-  <img src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white">
-  <img src="https://img.shields.io/badge/OAuth2-4285F4?style=for-the-badge&logo=googleauthenticator&logoColor=white">
-  <img src="https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white">
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-  <img src="https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
-  <img src="https://img.shields.io/badge/elasticsearch-005571?style=for-the-badge&logo=elasticsearch&logoColor=white">
-  <img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white">
-  <img src="https://img.shields.io/badge/openapi-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white">
-  <img src="https://img.shields.io/badge/kakakoapi-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
-  </br>
-
-  <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/cb8fc4be-0080-40ab-b569-f3254d33ae03" /> DevOps</h2>
-  <img src="https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white">
-  <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=Grafana&logoColor=white">
-  <img src="https://img.shields.io/badge/k6-7D64FF?style=for-the-badge&logo=k6&logoColor=white">
-  <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
-  <img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">
-  <img src="https://img.shields.io/badge/EC2-FF7800?style=for-the-badge&logo=ec2&logoColor=white">
-  <img src="https://img.shields.io/badge/Aurora-224099?style=for-the-badge&logo=aurora&logoColor=white">
-  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
-  <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white">
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/githubactions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
-  <img src="https://img.shields.io/badge/githubpages-222222?style=for-the-badge&logo=githubpages&logoColor=white">
-  <img src="https://img.shields.io/badge/confluence-172B4D?style=for-the-badge&logo=confluence&logoColor=white">
-  <img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
-  <img src="https://img.shields.io/badge/bitbucket-0052CC?style=for-the-badge&logo=bitbucket&logoColor=white">
-  <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
-  <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=white">
-  <img src="https://img.shields.io/badge/ngrok-1F1E37?style=for-the-badge&logo=ngrok&logoColor=white">
-  <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
-  <img src="https://img.shields.io/badge/caddy-1F88C0?style=for-the-badge&logo=caddy&logoColor=white">
-  <img src="https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white">
-  <img src="https://img.shields.io/badge/ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white">
-  </br>
-
-  <h2><img width="30" height="30" alt="image" src="https://github.com/user-attachments/assets/7af83d93-762e-4e30-8bdb-7737ed05b853" /> Others</h2>
-  <img src="https://img.shields.io/badge/node.js-5FA04E?style=for-the-badge&logo=node.js&logoColor=white">
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
-  <img src="https://img.shields.io/badge/socket-C93CD7?style=for-the-badge&logo=socket&logoColor=white">
-  <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
-  <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
-  <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white">
-  <img src="https://img.shields.io/badge/android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
-  <img src="https://img.shields.io/badge/raspberry pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white">
-  <img src="https://img.shields.io/badge/unity-FFFFFF?style=for-the-badge&logo=unity&logoColor=black">
-  <img src="https://img.shields.io/badge/gnuradio-FF7800?style=for-the-badge&logo=gnuradio&logoColor=white">
-  <img src="https://img.shields.io/badge/tailscale-242424?style=for-the-badge&logo=tailscale&logoColor=white">
-  <img src="https://img.shields.io/badge/termius-000000?style=for-the-badge&logo=termius&logoColor=white">
-  <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
-  <img src="https://img.shields.io/badge/resend-000000?style=for-the-badge&logo=resend&logoColor=white">
-</div>
+yaml에서 필드를 빠뜨리거나 형식이 틀리면 `npm run dev` 실행 시 어느 파일, 어느 필드인지 에러로 알려줍니다.
