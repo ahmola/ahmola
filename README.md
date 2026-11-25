@@ -1,8 +1,13 @@
-# Portfolio (Astro)
+# ahmola.github.io
+
+Astro로 만든 포트폴리오 사이트입니다. https://ahmola.github.io
+
+사이트 코드는 전부 `site/` 안에 있고, `main`에 push하면 `.github/workflows/deploy.yml`이 자동 배포합니다.
 
 ## 실행
 
 ```bash
+cd site
 npm install
 npm run dev      # http://localhost:4321 — 파일 저장하면 바로 반영
 npm run build    # dist/ 에 정적 사이트 생성
@@ -11,7 +16,7 @@ npm run build    # dist/ 에 정적 사이트 생성
 ## 디렉터리 구조
 
 ```
-portfolio/
+site/
 ├─ astro.config.mjs          # 사이트 주소(site), 배포 경로(base)
 ├─ public/                   # 그대로 복사되는 파일 (favicon, 이미지)
 │  └─ images/
@@ -39,11 +44,11 @@ portfolio/
 
 | 하고 싶은 것 | 수정할 곳 |
 |---|---|
-| 소개, 메뉴, 버튼 문구 | `src/content/site.yaml` |
-| 기술 스택 | `src/content/stack.yaml` |
-| 프로젝트 추가 | `_template.md` 복사 → `src/content/projects/이름.md`, `draft: false` |
-| 섹션 순서/삭제 | `src/pages/index.astro` |
-| 색, 폰트 | `src/styles/global.css` 맨 위 `:root` 변수 |
+| 소개, 메뉴, 버튼 문구 | `site/src/content/site.yaml` |
+| 기술 스택 | `site/src/content/stack.yaml` |
+| 프로젝트 추가 | `_template.md` 복사 → `site/src/content/projects/이름.md`, `draft: false` |
+| 섹션 순서/삭제 | `site/src/pages/index.astro` |
+| 색, 폰트 | `site/src/styles/global.css` 맨 위 `:root` 변수 |
 | 새 텍스트 필드 추가 | `content.config.ts` 스키마 → yaml → 컴포넌트 순서로 |
 
 yaml에서 필드를 빠뜨리거나 형식이 틀리면 `npm run dev` 실행 시 어느 파일, 어느 필드인지 에러로 알려줍니다.
