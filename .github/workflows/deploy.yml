@@ -1,0 +1,102 @@
+# main 에서 바로 GitHub Pages 로 배포합니다. (Settings → Pages → Source: GitHub Actions)
+#
+#  - site/ 가 바뀌면 포트폴리오만, blog/ 가 바뀌면 블로그만 다시 빌드합니다.
+#    바뀌지 않은 쪽은 이전 빌드 결과(캐시)를 그대로 사용합니다.
+#  - 결과물:  site → https://ahmola.github.io/
+#             blog → https://ahmola.github.io/blog/
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'blog/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # 각 폴더 내용의 해시 = 캐시 키. 폴더 안 파일이 하나라도 바뀌면 키가 달라져 다시 빌드됩니다.
+      - name: Compute cache keys
+        id: keys
+        run: |
+          echo "site=site-dist-${{ hashFiles('site/**') }}" >> "$GITHUB_OUTPUT"
+          echo "blog=blog-dist-${{ hashFiles('blog/**') }}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      # ---------- site ----------
+      - name: Restore site build
+        id: site-cache
+        uses: actions/cache/restore@v6
+        with:
+          path: site/dist
+          key: ${{ steps.keys.outputs.site }}
+      - name: Build site (changed)
+        if: steps.site-cache.outputs.cache-hit != 'true'
+        working-directory: site
+        run: npm ci && npm run build
+      - name: Save site build
+        if: steps.site-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: site/dist
+          key: ${{ steps.keys.outputs.site }}
+
+      # ---------- blog ----------
+      - name: Restore blog build
+        id: blog-cache
+        uses: actions/cache/restore@v6
+        with:
+          path: blog/dist
+          key: ${{ steps.keys.outputs.blog }}
+      - name: Build blog (changed)
+        if: steps.blog-cache.outputs.cache-hit != 'true'
+        working-directory: blog
+        run: npm ci && npm run build
+      - name: Save blog build
+        if: steps.blog-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: blog/dist
+          key: ${{ steps.keys.outputs.blog }}
+
+      # ---------- 합치기: site 를 루트에, blog 를 /blog 에 ----------
+      - name: Assemble
+        run: |
+          mkdir -p _site/blog
+          cp -r site/dist/. _site/
+          cp -r blog/dist/. _site/blog/
+          echo "site: ${{ steps.site-cache.outputs.cache-hit == 'true' && 'cached' || 'rebuilt' }}"
+          echo "blog: ${{ steps.blog-cache.outputs.cache-hit == 'true' && 'cached' || 'rebuilt' }}"
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

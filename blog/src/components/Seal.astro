@@ -1,0 +1,31 @@
+---
+/**
+ * 낙관(붉은 도장). 글자는 오른쪽 위에서부터 세로로 읽힙니다 (4글자 권장).
+ */
+interface Props { text: string; size?: number }
+const { text, size = 76 } = Astro.props;
+---
+
+<span class="seal title-font" style={`--size:${size}px`} aria-hidden="true">{text}</span>
+
+<style>
+  .seal {
+    display: inline-grid;
+    place-content: center;
+    width: var(--size);
+    height: var(--size);
+    padding: 6px;
+    border: 3px solid var(--vermilion);
+    border-radius: 4px;
+    outline: 1px solid var(--vermilion);
+    outline-offset: -8px;
+    color: var(--vermilion);
+    font-size: calc(var(--size) * 0.3);
+    line-height: 1.05;
+    writing-mode: vertical-rl;
+    text-align: center;
+    transform: rotate(-4deg);
+    opacity: 0.88;
+    mix-blend-mode: multiply;
+  }
+</style>

@@ -10,6 +10,6 @@ export default defineConfig({
   base,
   markdown: {
     remarkPlugins: [[rewriteLinks, { base, notesDir: './notes' }]],
-    shikiConfig: { theme: 'github-dark-dimmed', wrap: false },
+    shikiConfig: { theme: 'solarized-light', wrap: false },
   },
 });

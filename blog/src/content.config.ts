@@ -27,7 +27,9 @@ const blog = defineCollection({
   loader: file('src/content/blog.yaml', { parser: (text) => ({ blog: parseYaml(text) }) }),
   schema: z.object({
     title: z.string(),
+    hanja: z.string().optional(),
     description: z.string(),
+    seal: z.string().optional(),
     brand: z.string(),
     sourceRepo: z.string().url(),
     sourceBranch: z.string().default('main'),
@@ -35,6 +37,7 @@ const blog = defineCollection({
     sidebarLinks: z.array(link).default([]),
     labels: z.object({
       home: z.string(),
+      library: z.string(),
       toc: z.string(),
       viewSource: z.string(),
       menu: z.string(),

@@ -7,8 +7,8 @@ const blog = await getBlog();
 ---
 
 <DocsLayout title={blog.labels.notFound}>
-  <article class="prose">
-    <p class="mono accent">ERR 404</p>
+  <article class="prose book">
+    <p class="title-font" style="color:var(--vermilion);letter-spacing:.3em">四〇四</p>
     <h1>{blog.labels.notFound}</h1>
     <p><a href={withBase()}>{blog.labels.backHome}</a></p>
   </article>

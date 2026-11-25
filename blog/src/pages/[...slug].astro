@@ -21,8 +21,9 @@ const crumbs = path.split('/').slice(0, -1);
 ---
 
 <DocsLayout title={title} currentId={note.id} currentPath={path} headings={headings}>
+  <div class="book">
   {crumbs.length > 0 && (
-    <p class="crumbs mono">
+    <p class="crumbs">
       {crumbs.map((c, i) => (<>{i > 0 && <span class="sep">/</span>}<span>{c}</span></>))}
     </p>
   )}
@@ -30,9 +31,10 @@ const crumbs = path.split('/').slice(0, -1);
     {!h1 && <h1>{title}</h1>}
     <Content />
   </article>
-  <p class="source mono">
+  <p class="source">
     <a href={`${blog.sourceRepo}/blob/${blog.sourceBranch}/${path}`} target="_blank" rel="noopener">
       {blog.labels.viewSource} ↗
     </a>
   </p>
+  </div>
 </DocsLayout>

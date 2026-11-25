@@ -35,15 +35,15 @@ const { nodes, currentId, currentPath = '' } = Astro.props;
 </ul>
 
 <style>
-  .tree { margin: 0; padding: 0 0 0 12px; list-style: none; border-left: 1px solid var(--color-border); }
+  .tree { margin: 0; padding: 0 0 0 12px; list-style: none; border-left: 1px dotted var(--line-strong); }
   :global(.sidebar > nav > .tree) { padding-left: 0; border-left: 0; }
   li { margin: 1px 0; }
   summary {
     cursor: pointer;
     padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.82rem;
-    color: var(--color-text);
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    color: var(--ink);
     list-style: none;
     user-select: none;
   }
@@ -51,21 +51,21 @@ const { nodes, currentId, currentPath = '' } = Astro.props;
   summary::before {
     content: '▸';
     display: inline-block;
-    width: 1em;
-    color: var(--color-accent);
+    width: 1.1em;
+    color: var(--vermilion);
     transition: transform 0.15s;
   }
   details[open] > summary::before { transform: rotate(90deg); }
-  summary:hover { background: var(--color-accent-soft); }
+  summary:hover { color: var(--vermilion); }
   .leaf {
     display: block;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    color: var(--color-muted);
+    padding: 3px 10px;
+    border-left: 2px solid transparent;
+    font-size: 0.86rem;
+    color: var(--ink-muted);
     text-decoration: none;
-    line-height: 1.45;
+    line-height: 1.5;
   }
-  .leaf:hover { color: var(--color-text); background: var(--color-accent-soft); }
-  .leaf.active { color: var(--color-accent); background: var(--color-accent-soft); font-weight: 600; }
+  .leaf:hover { color: var(--ink); background: var(--vermilion-soft); }
+  .leaf.active { color: var(--vermilion); border-left-color: var(--vermilion); background: var(--vermilion-soft); font-weight: 600; }
 </style>

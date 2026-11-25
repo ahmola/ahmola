@@ -1,88 +1,123 @@
 /* =============================================================
-   블로그 전역 스타일 — 포트폴리오(site/)와 같은 색 토큰을 사용합니다.
+   블로그 전역 스타일 — 집현전 테마
+   한지 바탕 · 먹색 글씨 · 단청(주홍/청록/금) 포인트 · 서책의 사주쌍변 테두리
+   색은 아래 변수만 바꾸면 전체에 반영됩니다.
    ============================================================= */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --color-bg: #040705;
-  --color-surface: #08100a;
-  --color-text: #d4f5dc;
-  --color-muted: #7d9e84;
-  --color-border: #143a1e;
-  --color-accent: #00ff66;
-  --color-accent-soft: rgb(0 255 102 / 0.1);
+  --paper: #f4ecd9;        /* 한지 */
+  --paper-deep: #ebe0c6;   /* 사이드바, 코드 블록 */
+  --paper-light: #faf5e8;  /* 본문 서책 면 */
+  --ink: #2a221b;          /* 먹 */
+  --ink-muted: #6b5d4f;
+  --line: #d4c3a0;
+  --line-strong: #8c7356;
+  --vermilion: #a8382a;    /* 주칠 */
+  --jade: #2c6e63;         /* 녹청 */
+  --indigo: #1f4e79;       /* 감청 */
+  --gold: #b08d4a;
+  --wood: #3a2618;         /* 기둥·현판 나무색 */
+  --vermilion-soft: rgb(168 56 42 / 0.08);
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-serif: 'Noto Serif KR Variable', 'Nanum Myeongjo', 'AppleMyungjo', 'Batang', serif;
+  --font-title: 'Song Myung', 'Noto Serif KR Variable', serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --topbar-h: 56px;
+  --topbar-h: 60px;
   --sidebar-w: 280px;
-  --radius: 6px;
+  --radius: 3px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* 단청 띠 문양 */
+  --dancheong: repeating-linear-gradient(
+    90deg,
+    var(--jade) 0 22px,
+    var(--gold) 22px 25px,
+    var(--vermilion) 25px 41px,
+    var(--paper) 41px 44px,
+    var(--indigo) 44px 60px,
+    var(--paper) 60px 63px
+  );
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: calc(var(--topbar-h) + 16px); scrollbar-color: var(--color-border) var(--color-bg); }
+html { scroll-padding-top: calc(var(--topbar-h) + 24px); scrollbar-color: var(--line-strong) var(--paper-deep); }
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  line-height: 1.75;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
+  /* 한지 결: 아주 옅은 섬유 노이즈 */
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.15 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-::selection { background: var(--color-accent); color: var(--color-bg); }
+::selection { background: var(--vermilion); color: var(--paper-light); }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--vermilion); outline-offset: 2px; }
 
+.title-font { font-family: var(--font-title); font-weight: 400; }
 .mono { font-family: var(--font-mono); }
-.accent { color: var(--color-accent); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-.crumbs { margin: 0 0 12px; font-size: 0.78rem; color: var(--color-muted); }
-.crumbs .sep { margin: 0 6px; color: var(--color-accent); }
-.source { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--color-border); font-size: 0.8rem; }
-.source a { color: var(--color-muted); text-decoration: none; }
-.source a:hover { color: var(--color-accent); }
+.crumbs { margin: 0 0 14px; font-size: 0.85rem; color: var(--ink-muted); }
+.crumbs .sep { margin: 0 8px; color: var(--vermilion); }
+.source { margin: 40px 0 0; text-align: right; font-size: 0.85rem; }
+.source a { color: var(--ink-muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+.source a:hover { color: var(--vermilion); border-color: var(--vermilion); }
+
+/* ---------- 서책 면 (사주쌍변: 네 변을 두 줄로 두른 옛 책의 테두리) ---------- */
+.book {
+  max-width: 860px;
+  padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 60px);
+  background: var(--paper-light);
+  border: 4px double var(--line-strong);
+  box-shadow: 0 1px 0 var(--line), 0 12px 32px -18px rgb(58 38 24 / 0.35);
+}
 
 /* ---------- 노트 본문 ---------- */
-.prose { max-width: 780px; overflow-wrap: break-word; }
-.prose h1 { margin: 0 0 0.6em; font-size: clamp(1.8rem, 4vw, 2.3rem); line-height: 1.25; letter-spacing: -0.01em; }
-.prose h2 {
-  margin: 2.4em 0 0.8em;
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 1.45rem;
-  line-height: 1.35;
+.prose { overflow-wrap: break-word; }
+.prose h1, .prose h2, .prose h3, .prose h4 { font-family: var(--font-title); font-weight: 400; color: var(--ink); }
+.prose h1 {
+  margin: 0 0 1em;
+  padding-bottom: 0.4em;
+  border-bottom: 3px double var(--line-strong);
+  font-size: clamp(1.9rem, 4.2vw, 2.5rem);
+  line-height: 1.3;
 }
-.prose h2::before { content: '# '; font-family: var(--font-mono); color: var(--color-accent); opacity: 0.8; }
-.prose h3 { margin: 2em 0 0.6em; font-size: 1.18rem; }
-.prose h4 { margin: 1.6em 0 0.5em; font-size: 1.02rem; }
-.prose a { color: var(--color-accent); text-underline-offset: 3px; }
-.prose img { max-width: 100%; height: auto; border-radius: var(--radius); background: #fff; }
-.prose hr { border: 0; border-top: 1px solid var(--color-border); margin: 2.5em 0; }
+.prose h2 { margin: 2.2em 0 0.8em; font-size: 1.55rem; line-height: 1.4; }
+.prose h2::before { content: '◆'; margin-right: 0.45em; font-size: 0.7em; vertical-align: 0.15em; color: var(--vermilion); }
+.prose h3 { margin: 1.8em 0 0.6em; font-size: 1.25rem; color: var(--jade); }
+.prose h4 { margin: 1.5em 0 0.5em; font-size: 1.08rem; }
+.prose a { color: var(--vermilion); text-decoration-color: rgb(168 56 42 / 0.4); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: currentColor; }
+.prose img { max-width: 100%; height: auto; border: 1px solid var(--line); background: #fff; padding: 4px; }
+.prose hr { border: 0; height: 8px; margin: 2.6em 0; background: var(--dancheong); opacity: 0.55; }
 .prose ul, .prose ol { padding-left: 1.4em; }
-.prose li + li { margin-top: 0.25em; }
+.prose li + li { margin-top: 0.3em; }
+.prose li::marker { color: var(--vermilion); }
+.prose strong { color: #1d1712; }
 .prose blockquote {
-  margin: 1.5em 0;
-  padding: 0.6em 1em;
-  border-left: 3px solid var(--color-accent);
-  background: var(--color-accent-soft);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  color: var(--color-text);
+  margin: 1.6em 0;
+  padding: 0.7em 1.1em;
+  border-left: 3px solid var(--vermilion);
+  background: var(--vermilion-soft);
+  color: var(--ink);
 }
 .prose blockquote p { margin: 0.4em 0; }
-.prose code { font-family: var(--font-mono); font-size: 0.88em; }
-.prose :not(pre) > code { padding: 0.15em 0.4em; border-radius: 4px; background: var(--color-accent-soft); color: #b7f7c8; }
+.prose code { font-family: var(--font-mono); font-size: 0.86em; }
+.prose :not(pre) > code { padding: 0.12em 0.4em; border-radius: var(--radius); background: rgb(42 34 27 / 0.07); color: #7a2e22; }
 .prose pre {
-  margin: 1.4em 0;
+  margin: 1.5em 0;
   padding: 16px 18px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--jade);
   border-radius: var(--radius);
-  background: #0b130d !important;
+  background: var(--paper-deep) !important;
   overflow-x: auto;
   line-height: 1.6;
 }
-.prose table { display: block; width: max-content; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.5em 0; font-size: 0.92rem; }
-.prose th, .prose td { padding: 8px 12px; border: 1px solid var(--color-border); text-align: left; vertical-align: top; }
-.prose th { background: var(--color-surface); color: var(--color-accent); font-weight: 600; }
+.prose table { display: block; width: max-content; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.6em 0; font-size: 0.93rem; }
+.prose th, .prose td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+.prose th { background: var(--paper-deep); font-family: var(--font-title); font-weight: 400; }

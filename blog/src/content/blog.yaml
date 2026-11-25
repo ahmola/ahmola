@@ -1,35 +1,40 @@
 # =============================================================
-#  블로그 화면 문구
+#  블로그 화면 문구 (집현전 테마)
 #  - 노트 본문은 ComputerScience 저장소에서 작성합니다 (blog/notes 는 자동 복사본).
 #  - 여기서는 블로그 틀에 보이는 문구만 수정합니다.
 # =============================================================
 
-title: "Blog"
+title: "집현전"
+# 현판(상단 간판)과 홈 화면에 쓰이는 한자 이름
+hanja: "集賢殿"
 description: "컴퓨터공학 & 소프트웨어공학 학습 노트"
+# 홈 화면 낙관(빨간 도장)에 새길 글자 (4글자 권장)
+seal: "賢者之書"
 
-# 상단 왼쪽 로고 (포트폴리오 메인으로 이동)
+# 상단 왼쪽 (포트폴리오 메인으로 이동)
 brand: "ahmola"
 
-# 원본 저장소 (각 글의 "GitHub에서 보기" 링크에 사용)
+# 원본 저장소 (각 글의 "원본 보기" 링크에 사용)
 sourceRepo: "https://github.com/ahmola/ComputerScience"
 sourceBranch: "main"
 
 # 상단 메뉴
 nav:
-  - label: "Portfolio"
+  - label: "포트폴리오"
     href: "/"
   - label: "GitHub"
     href: "https://github.com/ahmola/ComputerScience"
 
 # 사이드바 맨 아래에 붙는 외부 링크
 sidebarLinks:
-  - label: "CodingTest 풀이 ↗"
+  - label: "코딩테스트 풀이 ↗"
     href: "https://github.com/ahmola/ComputerScience/tree/main/Algorithm/CodingTest"
 
 labels:
-  home: "Home"
-  toc: "On this page"
-  viewSource: "GitHub에서 보기"
-  menu: "메뉴"
-  notFound: "페이지를 찾을 수 없어요"
-  backHome: "블로그 홈으로"
+  home: "서문 (序文)"
+  library: "서고 (書庫)"
+  toc: "목차"
+  viewSource: "원본 보기"
+  menu: "서고 열기"
+  notFound: "찾으시는 서책이 없습니다"
+  backHome: "서문으로 돌아가기"

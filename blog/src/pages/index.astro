@@ -1,9 +1,10 @@
 ---
 /**
- * 블로그 홈: ComputerScience 저장소의 README.md 를 그대로 보여줍니다.
+ * 블로그 홈(서문): 현판 제목 + 낙관, 그 아래 ComputerScience 저장소의 README.md 를 그대로 보여줍니다.
  */
 import { render } from 'astro:content';
 import DocsLayout from '@/layouts/DocsLayout.astro';
+import Seal from '@/components/Seal.astro';
 import { getBlog, getNotes, isHome, sourcePath } from '@/lib/notes';
 
 const blog = await getBlog();
@@ -12,14 +13,42 @@ const rendered = home ? await render(home) : null;
 ---
 
 <DocsLayout description={blog.description} headings={rendered?.headings}>
-  <article class="prose">
-    {rendered ? <rendered.Content /> : <h1>{blog.title}</h1>}
-  </article>
-  {home && (
-    <p class="source mono">
-      <a href={`${blog.sourceRepo}/blob/${blog.sourceBranch}/${sourcePath(home)}`} target="_blank" rel="noopener">
-        {blog.labels.viewSource} ↗
-      </a>
-    </p>
-  )}
+  <div class="book">
+    <header class="hero">
+      <div>
+        {blog.hanja && <p class="hanja title-font">{blog.hanja}</p>}
+        <h1 class="title title-font">{blog.title}</h1>
+        <p class="desc">{blog.description}</p>
+      </div>
+      {blog.seal && <Seal text={blog.seal} />}
+    </header>
+    <article class="prose">
+      {rendered && <rendered.Content />}
+    </article>
+    {home && (
+      <p class="source">
+        <a href={`${blog.sourceRepo}/blob/${blog.sourceBranch}/${sourcePath(home)}`} target="_blank" rel="noopener">
+          {blog.labels.viewSource} ↗
+        </a>
+      </p>
+    )}
+  </div>
 </DocsLayout>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 8px solid transparent;
+    border-image: var(--dancheong) 1;
+  }
+  .hanja { margin: 0; font-size: 0.95rem; letter-spacing: 0.5em; color: var(--vermilion); }
+  .title { margin: 4px 0 0; font-size: clamp(2.6rem, 8vw, 3.8rem); line-height: 1.1; letter-spacing: 0.08em; }
+  .desc { margin: 10px 0 0; color: var(--ink-muted); }
+  /* README 의 첫 제목은 히어로와 겹치므로 조금 작게 */
+  .prose :global(h1:first-child) { font-size: 1.6rem; }
+</style>
