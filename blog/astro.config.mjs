@@ -9,7 +9,9 @@ export default defineConfig({
   // ahmola.github.io/blog 에 배포되므로 모든 경로 앞에 /blog 가 붙습니다.
   base,
   markdown: {
-    remarkPlugins: [[rewriteLinks, { base, notesDir: './notes' }]],
-    shikiConfig: { theme: 'solarized-light', wrap: false },
+    remarkPlugins: [
+      [rewriteLinks, { base, notesDir: './notes', sourceRepo: 'https://github.com/ahmola/ComputerScience' }],
+    ],
+    shikiConfig: { theme: 'solarized-light', wrap: true },
   },
 });

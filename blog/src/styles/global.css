@@ -115,9 +115,12 @@ a { color: inherit; }
   border-left: 3px solid var(--jade);
   border-radius: var(--radius);
   background: var(--paper-deep) !important;
-  overflow-x: auto;
   line-height: 1.6;
+  /* 긴 줄은 가로 스크롤 대신 화면 폭에 맞춰 줄바꿈 */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
+.prose pre code { white-space: inherit; }
 .prose table { display: block; width: max-content; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.6em 0; font-size: 0.93rem; }
 .prose th, .prose td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
 .prose th { background: var(--paper-deep); font-family: var(--font-title); font-weight: 400; }
