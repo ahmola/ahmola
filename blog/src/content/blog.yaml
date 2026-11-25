@@ -14,9 +14,7 @@ seal: "賢者之書"
 # 상단 왼쪽 (포트폴리오 메인으로 이동)
 brand: "ahmola"
 
-# 원본 저장소 (각 글의 "원본 보기" 링크에 사용)
-sourceRepo: "https://github.com/ahmola/ComputerScience"
-sourceBranch: "main"
+# 원본 저장소 목록(어느 저장소가 어느 폴더로 들어오는지)은 blog/sources.json 에서 관리합니다.
 
 # 상단 메뉴
 nav:

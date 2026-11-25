@@ -1,6 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { readFileSync } from 'node:fs';
 import rewriteLinks from './src/plugins/rewrite-links.mjs';
+
+const sources = JSON.parse(readFileSync(new URL('./sources.json', import.meta.url), 'utf8'));
 
 const base = '/blog';
 
@@ -10,7 +13,7 @@ export default defineConfig({
   base,
   markdown: {
     remarkPlugins: [
-      [rewriteLinks, { base, notesDir: './notes', sourceRepo: 'https://github.com/ahmola/ComputerScience' }],
+      [rewriteLinks, { base, notesDir: './notes', sources }],
     ],
     shikiConfig: { theme: 'solarized-light', wrap: true },
   },

@@ -31,8 +31,6 @@ const blog = defineCollection({
     description: z.string(),
     seal: z.string().optional(),
     brand: z.string(),
-    sourceRepo: z.string().url(),
-    sourceBranch: z.string().default('main'),
     nav: z.array(link).default([]),
     sidebarLinks: z.array(link).default([]),
     labels: z.object({

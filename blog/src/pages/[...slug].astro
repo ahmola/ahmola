@@ -4,7 +4,7 @@
  */
 import { render } from 'astro:content';
 import DocsLayout from '@/layouts/DocsLayout.astro';
-import { fileTitle, getBlog, getNotes, isHome, sourcePath, type Note } from '@/lib/notes';
+import { fileTitle, getBlog, getNotes, isHome, sourcePath, sourceUrl, type Note } from '@/lib/notes';
 
 export async function getStaticPaths() {
   const notes = await getNotes();
@@ -32,7 +32,7 @@ const crumbs = path.split('/').slice(0, -1);
     <Content />
   </article>
   <p class="source">
-    <a href={`${blog.sourceRepo}/blob/${blog.sourceBranch}/${path}`} target="_blank" rel="noopener">
+    <a href={sourceUrl(note)} target="_blank" rel="noopener">
       {blog.labels.viewSource} ↗
     </a>
   </p>

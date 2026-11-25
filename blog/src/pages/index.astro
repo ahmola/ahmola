@@ -5,7 +5,7 @@
 import { render } from 'astro:content';
 import DocsLayout from '@/layouts/DocsLayout.astro';
 import Seal from '@/components/Seal.astro';
-import { getBlog, getNotes, isHome, sourcePath } from '@/lib/notes';
+import { getBlog, getNotes, isHome, sourceUrl } from '@/lib/notes';
 
 const blog = await getBlog();
 const home = (await getNotes()).find(isHome);
@@ -27,7 +27,7 @@ const rendered = home ? await render(home) : null;
     </article>
     {home && (
       <p class="source">
-        <a href={`${blog.sourceRepo}/blob/${blog.sourceBranch}/${sourcePath(home)}`} target="_blank" rel="noopener">
+        <a href={sourceUrl(home)} target="_blank" rel="noopener">
           {blog.labels.viewSource} ↗
         </a>
       </p>

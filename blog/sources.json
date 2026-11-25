@@ -1,0 +1,16 @@
+[
+  {
+    "dir": "",
+    "name": "ComputerScience",
+    "repo": "https://github.com/ahmola/ComputerScience",
+    "branch": "main",
+    "exclude": ["Algorithm/CodingTest", "AI/홈페이지/coffeeshop"]
+  },
+  {
+    "dir": "REST",
+    "name": "REST",
+    "repo": "https://github.com/ahmola/Architectural-Styles-and-the-Design-of-Network-based-Software-Architectures",
+    "branch": "main",
+    "exclude": []
+  }
+]

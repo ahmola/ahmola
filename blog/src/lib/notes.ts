@@ -2,6 +2,7 @@
  * 노트 목록 / 사이드바 트리 / 제목 계산
  */
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import sources from '../../sources.json';
 
 export type Note = CollectionEntry<'notes'>;
 
@@ -25,6 +26,22 @@ export function sourcePath(note: Note): string {
   return (note.filePath ?? '').replace(/^(\.\/)?notes\//, '');
 }
 
+/** 이 노트가 온 원본 저장소 (sources.json 에서 dir 이 가장 길게 일치하는 항목) */
+export function sourceOf(note: Note) {
+  const p = sourcePath(note);
+  return [...sources]
+    .sort((a, b) => b.dir.length - a.dir.length)
+    .find((s) => s.dir === '' || p === s.dir || p.startsWith(s.dir + '/'))!;
+}
+
+/** 원본 저장소에서 이 노트를 보는 GitHub 주소 */
+export function sourceUrl(note: Note): string {
+  const s = sourceOf(note);
+  const p = sourcePath(note);
+  const inRepo = s.dir ? p.slice(s.dir.length + 1) : p;
+  return `${s.repo}/blob/${s.branch}/${inRepo.split('/').map(encodeURIComponent).join('/')}`;
+}
+
 /** 파일명에서 확장자를 뺀 이름 (사이드바 표시용) */
 export function fileTitle(note: Note): string {
   const p = sourcePath(note);
@@ -39,7 +56,7 @@ export async function getNotes() {
 
 const collator = new Intl.Collator('ko', { numeric: true, sensitivity: 'base' });
 
-/** 폴더 구조 그대로의 트리 (폴더 먼저, 그다음 파일 / 이름순) */
+/** 폴더 구조 그대로의 트리 */
 export function buildTree(notes: Note[]): TreeNode[] {
   const root: TreeNode = { name: '', children: [], path: '' };
   for (const note of notes) {
@@ -61,8 +78,10 @@ export function buildTree(notes: Note[]): TreeNode[] {
       }
     });
   }
+  // 폴더 먼저 → 그 폴더의 README → 나머지 파일 (이름순)
+  const rank = (n: TreeNode) => (n.note ? (/^readme$/i.test(n.name) ? 1 : 2) : 0);
   const sort = (nodes: TreeNode[]) => {
-    nodes.sort((a, b) => (!!a.note === !!b.note ? collator.compare(a.name, b.name) : a.note ? 1 : -1));
+    nodes.sort((a, b) => rank(a) - rank(b) || collator.compare(a.name, b.name));
     nodes.forEach((n) => sort(n.children));
   };
   sort(root.children);
